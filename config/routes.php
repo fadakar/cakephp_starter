@@ -135,5 +135,19 @@ Router::scope('/', [], function (RouteBuilder $routes) {
     ])->setHost('*.starter.local');
 });
 
-
+Router::scope('/news', function (RouteBuilder $routes) {
+    $routes->connect('/', ['controller' => 'News', 'action' => 'index']);
+    $routes->connect('/add', ['controller' => 'News', 'action' => 'add'])
+        ->setMethods(['get', 'post']);
+    $routes->connect('/:id/edit', ['controller' => 'News', 'action' => 'edit'])
+        ->setPass(['id'])
+        ->setPatterns([
+            'id' => '[0-9]+',
+        ]);
+    $routes->connect('/:id/delete', ['controller' => 'News', 'action' => 'delete'])
+        ->setPass(['id'])
+        ->setPatterns([
+            'id' => '[0-9]+',
+        ]);
+});
 
