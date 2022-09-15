@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -50,7 +51,7 @@ class NewsTable extends Table
         $validator
             ->scalar('title')
             ->maxLength('title', 255)
-            ->allowEmptyString('title');
+            ->notEmptyString('title', 'Please fill Title');
 
         $validator
             ->scalar('body')
