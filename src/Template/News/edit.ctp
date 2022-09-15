@@ -1,5 +1,20 @@
-edit page
+<div style="max-width: 80%; margin: 0 auto;">
+    <?=
+    $this->Form->create($news, [
+        'url' => [
+            'controller' => 'news',
+            'action' => 'edit',
+        ],
+        'type' => 'post'
+    ])
+    ?>
 
+    <?= $this->Form->control('title') ?>
+    <?= $this->Form->control('body') ?>
+
+    <?= $this->Form->submit('Save', ['style' => 'background: #00aa00; width:100%']) ?>
+    <?php $this->Form->end() ?>
+</div>
 
 <?php $this->start('menu') ?>
 <li>
