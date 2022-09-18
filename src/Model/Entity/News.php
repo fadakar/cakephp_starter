@@ -24,5 +24,6 @@ class News extends Entity
     protected $_accessible = [
         'title' => true,
         'body' => true,
+        'category_id' => true,
     ];
 }

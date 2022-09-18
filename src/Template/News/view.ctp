@@ -3,6 +3,15 @@
         <li>id: <?= $news->id ?></li>
         <li>title: <?= $news->title ?></li>
         <li>body: <?= $news->body ?></li>
+        <li>category: <?= isset($news->category) ? $news->category->title : '---' ?></li>
+        <li>
+            tags:
+            <ol type="1">
+                <?php foreach ($news->tags as $tag): ?>
+                    <li><?= $tag->title ?></li>
+                <?php endforeach; ?>
+            </ol>
+        </li>
     </ul>
 </div>
 

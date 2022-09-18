@@ -44,7 +44,7 @@ class NewsTable extends Table
             'targetForeignKey' => 'tags_id',
         ]);
 
-        $this->belongsTo('Category', [
+        $this->belongsTo('category', [
             'foreignKey' => 'category_id'
         ]);
     }
