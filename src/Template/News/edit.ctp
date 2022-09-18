@@ -9,6 +9,7 @@
     ])
     ?>
 
+    <?= $this->Form->control('category_id', ['options' => $categories]) ?>
 
     <?= $this->Form->control('title', ['error' => false]) ?>
     <span style="color: red;font-size: 12px;"><?= $this->Form->error('title') ?></span>

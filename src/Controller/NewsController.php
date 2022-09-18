@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * News Controller
@@ -71,7 +72,9 @@ class NewsController extends AppController
 
             }
         }
-        $this->set(compact('news'));
+        $categoryTable = TableRegistry::getTableLocator()->get('category');
+        $categories = $categoryTable->find('list')->limit(100);
+        $this->set(compact('news', 'categories'));
     }
 
     /**
@@ -98,7 +101,9 @@ class NewsController extends AppController
             }
             $this->Flash->error(__('The news could not be saved. Please, try again.'));
         }
-        $this->set(compact('news'));
+        $categoryTable = TableRegistry::getTableLocator()->get('category');
+        $categories = $categoryTable->find('list')->limit(100);
+        $this->set(compact('news', 'categories'));
     }
 
     /**
