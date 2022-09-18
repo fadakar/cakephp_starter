@@ -106,27 +106,27 @@ Router::defaultRouteClass(DashedRoute::class);
 
 
 //Router::connect('/' ,['controller' => 'Pages' , 'action' => 'hello']);
-Router::scope('/', [], function (RouteBuilder $routes) {
-    $routes->applyMiddleware('sayHi');
-
-    $routes->prefix('page', [], function (RouteBuilder $routes) {
-        $routes->connect('/', [
-            'controller' => 'Hello',
-            'action' => 'hello'
-        ])->setMethods(['get']);
-
-        $routes->connect('/hello/:id-:name', [
-            'controller' => 'Hello',
-            'action' => 'hello2'
-        ])
-            ->setPass(['name', 'id'])
-            ->setPatterns([
-                'id' => '[0-9]+',
-            ])
-            ->setMethods(['get']);
-    });
-
-});
+//Router::scope('/', [], function (RouteBuilder $routes) {
+//    $routes->applyMiddleware('sayHi');
+//
+//    $routes->prefix('page', [], function (RouteBuilder $routes) {
+//        $routes->connect('/', [
+//            'controller' => 'Hello',
+//            'action' => 'hello'
+//        ])->setMethods(['get']);
+//
+//        $routes->connect('/hello/:id-:name', [
+//            'controller' => 'Hello',
+//            'action' => 'hello2'
+//        ])
+//            ->setPass(['name', 'id'])
+//            ->setPatterns([
+//                'id' => '[0-9]+',
+//            ])
+//            ->setMethods(['get']);
+//    });
+//
+//});
 
 Router::scope('/', [], function (RouteBuilder $routes) {
     $routes->connect('/', [
@@ -158,3 +158,26 @@ Router::scope('/news', function (RouteBuilder $routes) {
         ]);
 });
 
+
+Router::scope('/category', function (RouteBuilder $routes) {
+    $routes->connect('/', ['controller' => 'Category', 'action' => 'index']);
+    $routes->connect('/:id', ['controller' => 'Category', 'action' => 'view'])
+        ->setPass(['id'])
+        ->setPatterns([
+            'id' => '[0-9]+'
+        ])
+        ->setMethods(['get']);
+
+    $routes->connect('/add', ['controller' => 'Category', 'action' => 'add'])
+        ->setMethods(['get', 'post']);
+    $routes->connect('/:id/edit', ['controller' => 'Category', 'action' => 'edit'])
+        ->setPass(['id'])
+        ->setPatterns([
+            'id' => '[0-9]+',
+        ]);
+    $routes->connect('/:id/delete', ['controller' => 'Category', 'action' => 'delete'])
+        ->setPass(['id'])
+        ->setPatterns([
+            'id' => '[0-9]+',
+        ]);
+});
