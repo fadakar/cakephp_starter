@@ -49,6 +49,8 @@ class NewsController extends AppController
      */
     public function add()
     {
+        // TODO create or link tags to news
+
         $news = $this->News->newEntity();
         if ($this->request->is('post')) {
             $news = $this->News->patchEntity($news, $this->request->getData());
@@ -81,6 +83,9 @@ class NewsController extends AppController
      */
     public function edit($id = null)
     {
+        // TODO create or link tags to news
+
+
         $news = $this->News->get($id, [
             'contain' => [],
         ]);
