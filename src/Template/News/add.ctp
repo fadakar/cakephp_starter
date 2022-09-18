@@ -9,7 +9,9 @@
     ])
     ?>
 
-    <?= $this->Form->control('title') ?>
+    <?= $this->Form->control('title', ['error' => false]) ?>
+    <span style="color: red;font-size: 12px;"><?= $this->Form->error('title') ?></span>
+
     <?= $this->Form->control('body') ?>
 
     <?= $this->Form->submit('Save', ['style' => 'background: #00aa00; width:100%']) ?>

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -51,8 +52,19 @@ class NewsController extends AppController
             if ($this->News->save($news)) {
                 $this->Flash->success(__('The news has been saved.'));
                 return $this->redirect(['action' => 'index']);
+            } else {
+
+                if (count($news->getErrors()) > 0) {
+                    foreach ($news->getErrors() as $errors) {
+                        foreach ($errors as $error) {
+                            $this->Flash->error($error);
+                        }
+                    }
+                } else {
+                    $this->Flash->error(__('The news could not be saved. Please, try again.'));
+                }
+
             }
-            $this->Flash->error(__('The news could not be saved. Please, try again.'));
         }
         $this->set(compact('news'));
     }
