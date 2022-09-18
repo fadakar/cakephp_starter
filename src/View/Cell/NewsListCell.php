@@ -34,8 +34,8 @@ class NewsListCell extends Cell
      */
     public function display()
     {
-        $news = TableRegistry::getTableLocator()->get('news');
-        $newsList = $news->find();
-        $this->set('newsList', $newsList);
+        $newsTable = TableRegistry::getTableLocator()->get('news');
+        $newsList = $newsTable->find();
+        $this->set(compact('newsList', 'newsTable'));
     }
 }

@@ -30,7 +30,7 @@ class NewsController extends AppController
      * @return \Cake\Http\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    public function view($id = null, $slug= '')
     {
         $news = $this->News->get($id, [
             'contain' => [],

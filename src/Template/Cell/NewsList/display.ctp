@@ -14,6 +14,14 @@
             <td>
                 <?=
                 $this->Html->link(
+                    'Show',
+                    ['controller' => 'news', 'action' => 'view', $item->id, $newsTable->slug($item->title)],
+                    ['style' => 'color:blue']
+                )
+                ?>
+
+                <?=
+                $this->Html->link(
                     'Edit',
                     ['controller' => 'news', 'action' => 'edit', $item->id]
                 )

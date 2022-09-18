@@ -32,6 +32,7 @@ class NewsTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
+        $this->addBehavior('Slug');
 
         $this->setTable('news');
         $this->setDisplayField('title');

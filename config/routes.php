@@ -137,6 +137,13 @@ Router::scope('/', [], function (RouteBuilder $routes) {
 
 Router::scope('/news', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'News', 'action' => 'index']);
+    $routes->connect('/:id-:slug', ['controller' => 'News', 'action' => 'view'])
+        ->setPass(['id', 'slug'])
+        ->setPatterns([
+            'id' => '[0-9]+'
+        ])
+        ->setMethods(['get']);
+
     $routes->connect('/add', ['controller' => 'News', 'action' => 'add'])
         ->setMethods(['get', 'post']);
     $routes->connect('/:id/edit', ['controller' => 'News', 'action' => 'edit'])
