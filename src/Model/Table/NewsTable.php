@@ -2,6 +2,8 @@
 
 namespace App\Model\Table;
 
+use ArrayObject;
+use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -34,6 +36,14 @@ class NewsTable extends Table
         $this->setTable('news');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
+    }
+
+
+    public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
+    {
+        if (isset($data['title'])) {
+            $data['title'] = 'title: ' . $data['title'];
+        }
     }
 
     /**
