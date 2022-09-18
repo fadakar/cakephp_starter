@@ -1,6 +1,7 @@
 <table>
     <thead>
     <th>id</th>
+    <th>category</th>
     <th>title</th>
     <th>body</th>
     <th></th>
@@ -9,6 +10,7 @@
     <?php foreach ($newsList as $item) : ?>
         <tr>
             <td><?= $item->id ?></td>
+            <td><?= isset($item->category) ? $item->category->title : '---' ?></td>
             <td><?= $item->title ?></td>
             <td><?= $item->body ?></td>
             <td>

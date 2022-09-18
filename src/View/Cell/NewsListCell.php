@@ -35,7 +35,8 @@ class NewsListCell extends Cell
     public function display()
     {
         $newsTable = TableRegistry::getTableLocator()->get('news');
-        $newsList = $newsTable->find();
+        $newsList = $newsTable->find()
+            ->contain(['category', 'tags']);
         $this->set(compact('newsList', 'newsTable'));
     }
 }
