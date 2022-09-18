@@ -43,6 +43,10 @@ class CategoryTable extends Table
         $this->addBehavior('Timestamp');
         $this->addBehavior('Tree');
 
+        $this->hasMany('news', [
+            'foreignKey' => 'category_id'
+        ]);
+
         $this->belongsTo('ParentCategory', [
             'className' => 'Category',
             'foreignKey' => 'parent_id',

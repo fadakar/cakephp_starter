@@ -37,6 +37,16 @@ class NewsTable extends Table
         $this->setTable('news');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
+
+        $this->belongsToMany('tags', [
+            'through' => 'NewsTags',
+            'foreignKey' => 'news_id',
+            'targetForeignKey' => 'tags_id',
+        ]);
+
+        $this->belongsTo('Category', [
+            'foreignKey' => 'category_id'
+        ]);
     }
 
 
