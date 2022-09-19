@@ -8,7 +8,8 @@
         </div>
     </div>
 
-    <div>
+    <div class="flex gap-2 items-center">
+        <div><?= $this->Identity->get('nickname') ?> </div>
         <a class="button secondary" href="<?= $this->Url->build(['controller' => 'auth', 'action' => 'logout']) ?>">
             <i class="fa fa-arrow-right-from-bracket"></i>
             خروج
