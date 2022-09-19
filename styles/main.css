@@ -18,7 +18,7 @@
 }
 
 .button.green {
-    @apply text-white bg-green-300 hover:bg-green-400 focus:ring-green-300;
+    @apply text-white bg-green-400 hover:bg-green-300 focus:ring-green-300;
 }
 
 .button.red {
