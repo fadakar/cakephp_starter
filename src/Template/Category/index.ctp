@@ -1,7 +1,7 @@
 <?php $this->start('title') ?>
 <div class="flex items-center gap-4">
+    <i class="text-gray-600 fa fa-list-tree"></i>
     <div>لیست دسته ها</div>
-    <i class="text-gray-600 fa fa-radio"></i>
 </div>
 <?php $this->end() ?>
 

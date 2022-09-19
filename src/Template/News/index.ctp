@@ -1,7 +1,7 @@
 <?php $this->start('title') ?>
 <div class="flex items-center gap-4">
-    <div>لیست خبر ها</div>
     <i class="text-gray-600 fa fa-radio"></i>
+    <div>لیست خبر ها</div>
 </div>
 <?php $this->end() ?>
 
