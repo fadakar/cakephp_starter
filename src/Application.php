@@ -16,6 +16,7 @@
 namespace App;
 
 use App\Middleware\sayHiMiddleware;
+use Authentication\AuthenticationService;
 use Authentication\AuthenticationServiceProviderInterface;
 use Authentication\Middleware\AuthenticationMiddleware;
 use Cake\Core\Configure;
@@ -63,7 +64,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
     {
         $service = new AuthenticationService();
         $service->setConfig([
-            'unauthenticatedRedirect' => '/auth/login',
+            'unauthenticatedRedirect' => '/login',
             'queryParam' => 'redirect',
         ]);
 
@@ -79,7 +80,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         $service->loadAuthenticator('Authentication.Session');
         $service->loadAuthenticator('Authentication.Form', [
             'fields' => $fields,
-            'loginUrl' => '/auth/login'
+            'loginUrl' => '/login'
         ]);
 
         return $service;
