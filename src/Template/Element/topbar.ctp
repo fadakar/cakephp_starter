@@ -1,4 +1,4 @@
-<div class="flex justify-end">
+<div class="flex">
     <div>
         <?= $this->fetch('title') ?>
     </div>

@@ -42,6 +42,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 <div class="grid grid-rows-1 grid-cols-12 min-h-full">
 
+    <div class="col-span-2">
+        <div class="overflow-y-auto w-full h-full py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
+            <?= $this->element('sidebar') ?>
+        </div>
+    </div>
+
     <div class=" col-span-10">
         <div class="flex flex-col">
             <div>
@@ -56,11 +62,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
     </div>
 
-    <div class=" col-span-2">
-        <div class="overflow-y-auto w-full h-full py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
-            <?= $this->element('sidebar') ?>
-        </div>
-    </div>
 
 </div>
 
