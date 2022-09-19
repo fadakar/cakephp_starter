@@ -53,6 +53,7 @@ class UserSeedCommand extends Command
 
         $user->email = 'fadakargholamreza@gmail.com';
         $user->password = '1234';
+        $user->nickname = 'Mr.Fadakar';
         $this->Users->save($user);
         $io->out("[ CREATED ][ USER ]\tfadakargholamreza@gmail.com ");
     }
