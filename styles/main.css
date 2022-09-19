@@ -16,3 +16,12 @@
 .button.secondary {
     @apply text-white bg-gray-300 hover:bg-gray-400 focus:ring-gray-300;
 }
+
+.button.green {
+    @apply text-white bg-green-300 hover:bg-green-400 focus:ring-green-300;
+}
+
+.button.red {
+    @apply text-white bg-red-300 hover:bg-red-400 focus:ring-red-300;
+}
+
