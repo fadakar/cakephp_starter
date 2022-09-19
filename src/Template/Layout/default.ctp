@@ -40,7 +40,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body>
 
 
-<div class="grid grid-rows-1 grid-cols-12 min-h-full">
+<div class="grid grid-rows-1 grid-cols-12 min-h-screen">
 
     <div class="col-span-2">
         <div class="overflow-y-auto w-full h-full py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
