@@ -6,9 +6,10 @@
 <?php $this->end() ?>
 
 <?php $this->start('topbar-actions') ?>
-<a class="button green" href="<?= $this->Url->build(['controller' => 'category', 'action' => 'add']) ?>">
-    دسته جدید
+<a class="button green flex gap-2 justify-between items-center"
+   href="<?= $this->Url->build(['controller' => 'category', 'action' => 'add']) ?>">
     <i class="fa fa-plus"></i>
+    <div> دسته جدید</div>
 </a>
 <?php $this->end() ?>
 
