@@ -1,5 +1,10 @@
-<h1>News List </h1>
-<br>
+<?php $this->start('title') ?>
+<div class="flex items-center gap-4">
+    <div>لیست خبر ها</div>
+    <i class="text-gray-600 fa fa-radio"></i>
+</div>
+<?php $this->end() ?>
+
 <?= $this->cell('NewsList') ?>
 
 

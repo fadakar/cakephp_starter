@@ -1,9 +1,11 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Category $category
- */
-?>
+<?php $this->start('title') ?>
+<div class="flex items-center gap-4">
+    <div>نمایش دسته</div>
+    <i class="text-gray-600 fa fa-eye"></i>
+</div>
+<?php $this->end() ?>
+
+
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
@@ -56,36 +58,36 @@
     <div class="related">
         <h4><?= __('Related Category') ?></h4>
         <?php if (!empty($category->child_category)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Title') ?></th>
-                <th scope="col"><?= __('Description') ?></th>
-                <th scope="col"><?= __('Lft') ?></th>
-                <th scope="col"><?= __('Rght') ?></th>
-                <th scope="col"><?= __('Parent Id') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($category->child_category as $childCategory): ?>
-            <tr>
-                <td><?= h($childCategory->id) ?></td>
-                <td><?= h($childCategory->title) ?></td>
-                <td><?= h($childCategory->description) ?></td>
-                <td><?= h($childCategory->lft) ?></td>
-                <td><?= h($childCategory->rght) ?></td>
-                <td><?= h($childCategory->parent_id) ?></td>
-                <td><?= h($childCategory->created) ?></td>
-                <td><?= h($childCategory->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Category', 'action' => 'view', $childCategory->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Category', 'action' => 'edit', $childCategory->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Category', 'action' => 'delete', $childCategory->id], ['confirm' => __('Are you sure you want to delete # {0}?', $childCategory->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th scope="col"><?= __('Id') ?></th>
+                    <th scope="col"><?= __('Title') ?></th>
+                    <th scope="col"><?= __('Description') ?></th>
+                    <th scope="col"><?= __('Lft') ?></th>
+                    <th scope="col"><?= __('Rght') ?></th>
+                    <th scope="col"><?= __('Parent Id') ?></th>
+                    <th scope="col"><?= __('Created') ?></th>
+                    <th scope="col"><?= __('Modified') ?></th>
+                    <th scope="col" class="actions"><?= __('Actions') ?></th>
+                </tr>
+                <?php foreach ($category->child_category as $childCategory): ?>
+                    <tr>
+                        <td><?= h($childCategory->id) ?></td>
+                        <td><?= h($childCategory->title) ?></td>
+                        <td><?= h($childCategory->description) ?></td>
+                        <td><?= h($childCategory->lft) ?></td>
+                        <td><?= h($childCategory->rght) ?></td>
+                        <td><?= h($childCategory->parent_id) ?></td>
+                        <td><?= h($childCategory->created) ?></td>
+                        <td><?= h($childCategory->modified) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['controller' => 'Category', 'action' => 'view', $childCategory->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['controller' => 'Category', 'action' => 'edit', $childCategory->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['controller' => 'Category', 'action' => 'delete', $childCategory->id], ['confirm' => __('Are you sure you want to delete # {0}?', $childCategory->id)]) ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
         <?php endif; ?>
     </div>
 </div>

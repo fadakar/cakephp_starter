@@ -1,3 +1,10 @@
+<?php $this->start('title') ?>
+<div class="flex items-center gap-4">
+    <div>نمایش خبر </div>
+    <i class="text-gray-600 fa fa-eye"></i>
+</div>
+<?php $this->end() ?>
+
 <div style="max-width: 80%; margin: 0 auto;">
     <ul style="margin-top: 20px;">
         <li>id: <?= $news->id ?></li>

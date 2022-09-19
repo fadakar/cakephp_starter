@@ -1,3 +1,10 @@
+<?php $this->start('title') ?>
+<div class="flex items-center gap-4">
+    <div>ویرایش خبر </div>
+    <i class="text-gray-600 fa fa-edit"></i>
+</div>
+<?php $this->end() ?>
+
 <div style="max-width: 80%; margin: 0 auto;">
     <?=
     $this->Form->create($news, [

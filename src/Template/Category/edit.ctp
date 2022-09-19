@@ -1,9 +1,10 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Category $category
- */
-?>
+<?php $this->start('title') ?>
+<div class="flex items-center gap-4">
+    <div>ویرایش دسته </div>
+    <i class="text-gray-600 fa fa-edit"></i>
+</div>
+<?php $this->end() ?>
+
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
