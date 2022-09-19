@@ -5,6 +5,14 @@
 </div>
 <?php $this->end() ?>
 
+<?php $this->start('topbar-actions') ?>
+<a class="button green" href="<?= $this->Url->build(['controller' => 'news', 'action' => 'add']) ?>">
+    خبر جدید
+    <i class="fa fa-plus"></i>
+</a>
+<?php $this->end() ?>
+
+
 <?= $this->cell('NewsList') ?>
 
 
