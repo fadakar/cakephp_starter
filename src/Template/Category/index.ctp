@@ -5,42 +5,64 @@
 </div>
 <?php $this->end() ?>
 
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Category'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="category index large-9 medium-8 columns content">
-    <h3><?= __('Category') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('title') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('parent_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
+<?php $this->start('topbar-actions') ?>
+<a class="button green" href="<?= $this->Url->build(['controller' => 'category', 'action' => 'add']) ?>">
+    دسته جدید
+    <i class="fa fa-plus"></i>
+</a>
+<?php $this->end() ?>
+
+<div class="overflow-x-auto relative">
+    <table class="w-full text-sm  text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+            <th scope="col" class="py-3 px-6">
+                #
+            </th>
+            <th scope="col" class="py-3 px-6">
+                دسته پدر
+            </th>
+            <th scope="col" class="py-3 px-6">
+                عنوان
+            </th>
+            <th scope="col" class="py-3 px-6">
+            </th>
+        </tr>
         </thead>
         <tbody>
-            <?php foreach ($category as $category): ?>
-            <tr>
-                <td><?= $this->Number->format($category->id) ?></td>
-                <td><?= h($category->title) ?></td>
-                <td><?= $category->has('parent_category') ? $this->Html->link($category->parent_category->title, ['controller' => 'Category', 'action' => 'view', $category->parent_category->id]) : '' ?></td>
-                <td><?= h($category->created) ?></td>
-                <td><?= h($category->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $category->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $category->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $category->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)]) ?>
+
+        <?php foreach ($category as $item) : ?>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th class="py-4 px-6">
+                    <?= $this->Number->format($item->id) ?>
+                </th>
+                <td class="py-4 px-6">
+                    <?= $item->has('parent_category') ? $this->Html->link($item->parent_category->title, ['controller' => 'Category', 'action' => 'view', $item->parent_category->id]) : '' ?>
+                </td>
+                <td class="py-4 px-6">
+                    <?= h($item->title) ?>
+                </td>
+                <td class="flex gap-2 items-center justify-end">
+                    <a href="<?= $this->Url->build(['controller' => 'category', 'action' => 'view', $item->id]) ?>"
+                       class="button secondary">
+                        <i class="fa fa-eye"></i>
+                    </a>
+
+                    <a href="<?= $this->Url->build(['controller' => 'category', 'action' => 'edit', $item->id]) ?>"
+                       class="button secondary">
+                        <i class="fa fa-edit"></i>
+                    </a>
+
+                    <a href="<?= $this->Url->build(['controller' => 'category', 'action' => 'delete', $item->id]) ?>"
+                       class="button secondary">
+                        <i class="fa fa-trash"></i>
+                    </a>
                 </td>
             </tr>
-            <?php endforeach; ?>
+        <?php endforeach; ?>
         </tbody>
     </table>
+
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('first')) ?>
