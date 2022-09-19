@@ -31,6 +31,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('style.css') ?>
 
     <?= $this->fetch('meta') ?>
+
+    <?= $this->Html->css('tailwind.prod') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
