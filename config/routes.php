@@ -135,9 +135,11 @@ Router::defaultRouteClass(DashedRoute::class);
 //    ])->setHost('*.starter.local');
 //});
 
-Router::scope('/', function (RouteBuilder $routes) {
-    $routes->redirect('/', ['controller' => 'Dashboard', 'action' => 'index']);
-});
+//Router::scope('/', function (RouteBuilder $routes) {
+//    $routes->redirect('/', ['controller' => 'Dashboard', 'action' => 'index']);
+//});
+
+Router::connect('/login', ['controller' => 'Auth', 'action' => 'login']);
 
 Router::scope('/dash', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
