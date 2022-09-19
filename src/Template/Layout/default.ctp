@@ -42,7 +42,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 <div class="grid grid-rows-1 grid-cols-12 min-h-screen">
 
-    <div class="col-span-2">
+    <div class="col-span-2 shadow-[1px_0px_2px_3px_rgba(0,0,0,.2)] z-[999]">
         <div class="overflow-y-auto w-full h-full py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
             <?= $this->element('sidebar') ?>
         </div>
