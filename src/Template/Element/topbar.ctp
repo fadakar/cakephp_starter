@@ -1,4 +1,4 @@
-<div class="flex gap-4">
+<div class="flex gap-4 items-center">
     <div>
         <?= $this->fetch('title') ?>
     </div>
