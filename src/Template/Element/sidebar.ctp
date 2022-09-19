@@ -1,8 +1,8 @@
 <ul class="space-y-2 mt-4">
 
     <li>
-        <a href="#"
-           class="menu-item">
+        <a href="<?= $this->Url->build(['controller' => 'dashboard', 'action' => 'index']) ?>"
+           class="menu-item <?= $this->ActiveLink->is($this, ['controller' => 'dashboard', 'action' => 'index']) ? 'active' : '' ?>">
             <i class="fas fa-rocket"></i>
             <span>داشبورد</span>
         </a>
