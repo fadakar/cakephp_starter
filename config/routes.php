@@ -128,11 +128,19 @@ Router::defaultRouteClass(DashedRoute::class);
 //
 //});
 
-Router::scope('/', [], function (RouteBuilder $routes) {
-    $routes->connect('/', [
-        'controller' => 'Pages',
-        'action' => 'host'
-    ])->setHost('*.starter.local');
+//Router::scope('/', [], function (RouteBuilder $routes) {
+//    $routes->connect('/', [
+//        'controller' => 'Pages',
+//        'action' => 'host'
+//    ])->setHost('*.starter.local');
+//});
+
+Router::scope('/', function (RouteBuilder $routes) {
+    $routes->redirect('/', ['controller' => 'Dashboard', 'action' => 'index']);
+});
+
+Router::scope('/dash', function (RouteBuilder $routes) {
+    $routes->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
 });
 
 Router::scope('/news', function (RouteBuilder $routes) {
