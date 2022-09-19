@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\Auth\DefaultPasswordHasher;
@@ -26,6 +27,7 @@ class User extends Entity
      */
     protected $_accessible = [
         'email' => true,
+        'nickname' => true,
         'password' => true,
         'created' => true,
         'modified' => true,
