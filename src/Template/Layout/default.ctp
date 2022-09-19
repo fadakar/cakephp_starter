@@ -33,27 +33,36 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('meta') ?>
 
     <?= $this->Html->css('tailwind.prod') ?>
+    <?= $this->Html->css('fa/css/all.min') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
-<nav class="top-bar expanded" data-topbar role="navigation">
-    <ul class="title-area large-3 medium-4 columns">
-        <li class="name">
-            <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-        </li>
-    </ul>
-    <div class="top-bar-section">
-        <ul class="right">
-            <?= $this->fetch('menu') ?>
-        </ul>
+
+
+<div class="grid grid-rows-1 grid-cols-12 min-h-full">
+
+    <div class=" col-span-10">
+        <div class="flex flex-col">
+            <div>
+                <?= $this->Flash->render() ?>
+            </div>
+            <div class="bg-gray-100 w-full text-right p-4">
+                <?= $this->element('topbar') ?>
+            </div>
+            <div class="p-8">
+                <?= $this->fetch('content') ?>
+            </div>
+        </div>
     </div>
-</nav>
-<?= $this->Flash->render() ?>
-<div class="container clearfix">
-    <?= $this->fetch('content') ?>
+
+    <div class=" col-span-2">
+        <div class="overflow-y-auto w-full h-full py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
+            <?= $this->element('sidebar') ?>
+        </div>
+    </div>
+
 </div>
-<footer>
-</footer>
+
 </body>
 </html>
