@@ -16,14 +16,14 @@
     ])
     ?>
 
-    <?= $this->Form->control('category_id', ['options' => $categories]) ?>
+    <?= $this->Form->control('category_id', ['options' => $categories, 'label' => 'دسته']) ?>
 
-    <?= $this->Form->control('title', ['error' => false]) ?>
+    <?= $this->Form->control('title', ['error' => false, 'label' => 'عنوان']) ?>
     <span style="color: red;font-size: 12px;"><?= $this->Form->error('title') ?></span>
 
-    <?= $this->Form->control('body') ?>
+    <?= $this->Form->control('body', ['label' => 'محتوا']) ?>
 
-    <?= $this->Form->submit('Save', ['style' => 'background: #00aa00; width:100%']) ?>
+    <?= $this->Form->submit('ثبت',['class' => 'button primary mt-2']) ?>
     <?php $this->Form->end() ?>
 </div>
 
