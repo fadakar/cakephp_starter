@@ -24,13 +24,13 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr class="text-right">
                     <th scope="col" class="py-3 px-6">
-                        #
+                        <?= $this->Paginator->sort('id', '#') ?>
                     </th>
                     <th scope="col" class="py-3 px-6">
-                        دسته
+                        <?= $this->Paginator->sort('category.title', 'دسته') ?>
                     </th>
                     <th scope="col" class="py-3 px-6">
-                        عنوان
+                        <?= $this->Paginator->sort('title', 'عنوان') ?>
                     </th>
                     <th scope="col" class="py-3 px-6">
                         محتوا

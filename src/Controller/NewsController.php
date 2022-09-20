@@ -16,6 +16,22 @@ use Cake\ORM\TableRegistry;
  */
 class NewsController extends AppController
 {
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Paginator');
+    }
+
+    public $paginate = [
+        'limit' => 5,
+        'sortWhitelist' => [
+            'id',
+            'category.title',
+            'title'
+        ]
+    ];
+
     /**
      * Index method
      *
@@ -31,7 +47,8 @@ class NewsController extends AppController
         if (!empty($searchTerm)) {
             $newsList->find('fullTextSearch', ['term' => $searchTerm]);
         }
-        
+
+        $newsList = $this->paginate($newsList);
         $this->set(compact('newsList', 'newsTable'));
     }
 
