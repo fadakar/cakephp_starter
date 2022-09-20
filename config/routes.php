@@ -157,12 +157,12 @@ Router::scope('/news', function (RouteBuilder $routes) {
 
     $routes->connect('/add', ['controller' => 'News', 'action' => 'add'])
         ->setMethods(['get', 'post']);
-    $routes->connect('/:id/edit', ['controller' => 'News', 'action' => 'edit'])
+    $routes->connect('/edit/:id', ['controller' => 'News', 'action' => 'edit'])
         ->setPass(['id'])
         ->setPatterns([
             'id' => '[0-9]+',
         ]);
-    $routes->connect('/:id/delete', ['controller' => 'News', 'action' => 'delete'])
+    $routes->connect('/delete/:id', ['controller' => 'News', 'action' => 'delete'])
         ->setPass(['id'])
         ->setPatterns([
             'id' => '[0-9]+',
@@ -181,12 +181,12 @@ Router::scope('/category', function (RouteBuilder $routes) {
 
     $routes->connect('/add', ['controller' => 'Category', 'action' => 'add'])
         ->setMethods(['get', 'post']);
-    $routes->connect('/:id/edit', ['controller' => 'Category', 'action' => 'edit'])
+    $routes->connect('/edit/:id', ['controller' => 'Category', 'action' => 'edit'])
         ->setPass(['id'])
         ->setPatterns([
             'id' => '[0-9]+',
         ]);
-    $routes->connect('/:id/delete', ['controller' => 'Category', 'action' => 'delete'])
+    $routes->connect('/delete/:id', ['controller' => 'Category', 'action' => 'delete'])
         ->setPass(['id'])
         ->setPatterns([
             'id' => '[0-9]+',
