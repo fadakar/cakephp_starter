@@ -38,5 +38,6 @@ class AppView extends View
     public function initialize()
     {
         $this->loadHelper('ActiveLink');
+        $this->loadHelper('Authentication.Identity');
     }
 }
