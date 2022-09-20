@@ -35,7 +35,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('tailwind.prod') ?>
     <?= $this->Html->css('fa/css/all.min') ?>
     <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
 </head>
 <body>
 
@@ -65,5 +64,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 </div>
 
+<?= $this->fetch('script') ?>
 </body>
 </html>

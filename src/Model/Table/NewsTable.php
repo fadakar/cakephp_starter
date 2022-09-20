@@ -86,4 +86,9 @@ class NewsTable extends Table
         $rules->add($rules->isUnique(['title'], 'title is unique, please choose another'));
         return $rules;
     }
+
+    public function fullTextSearch($term)
+    {
+
+    }
 }

@@ -21,9 +21,14 @@ class NewsController extends AppController
      */
     public function index()
     {
+        $searchTerm = $this->request->getQuery('searchTerm');
         $newsTable = $this->News;
         $newsList = $this->News->find()
             ->contain(['category', 'tags']);
+        if (!empty($searchTerm)) {
+            $newsList->where("MATCH(News.title, body) AGAINST('$searchTerm' IN BOOLEAN MODE)");
+        }
+
         $this->set(compact('newsList', 'newsTable'));
     }
 
