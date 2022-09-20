@@ -70,3 +70,11 @@ select {
     focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5;
 }
 
+/*------------------------- cards --------------------------------------*/
+.card {
+    @apply text-center bg-white rounded-xl overflow-hidden border shadow-md hover:ring-2 hover:ring-gray-200 transition-all ease-in-out duration-200;
+}
+
+.card.blue {
+    @apply hover:ring-2 hover:ring-blue-200;
+}

@@ -13,8 +13,20 @@
 </a>
 <?php $this->end() ?>
 
-
-<?= $this->cell('NewsList') ?>
+<div class="w-full card blue">
+    <div class="flex flex-col mr-[-2px]">
+        <div class="grid grid-cols-12 ">
+            <div class="col-span-10">
+                <?= $this->Form->control('searchTerm', ['label' => false, 'class' => 'rounded-none', 'placeholder' => 'جستجو سریع ...']) ?>
+            </div>
+            <button class="col-span-2 button primary !rounded-none">
+                <i class="far fa-search"></i>
+                جستجو
+            </button>
+        </div>
+        <?= $this->cell('NewsList') ?>
+    </div>
+</div>
 
 
 <?php $this->start('menu') ?>
