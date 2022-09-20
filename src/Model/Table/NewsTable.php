@@ -3,6 +3,7 @@
 namespace App\Model\Table;
 
 use ArrayObject;
+use Cake\Database\Expression\QueryExpression;
 use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -87,8 +88,17 @@ class NewsTable extends Table
         return $rules;
     }
 
-    public function fullTextSearch($term)
+    public function FindFullTextSearch(Query $query, array $options): Query
     {
+        $term = $options['term'] ?? '';
+        $query->where(function (QueryExpression $exp, Query $query) use ($term) {
+            $newsSearch = $query->newExpr("MATCH(News.title, News.body) AGAINST('*$term*' IN BOOLEAN MODE)");
+            $categorySearch = $query->newExpr("MATCH(category.title) AGAINST('*$term*' IN BOOLEAN MODE)");
 
+            return $exp->or([
+                $newsSearch, $categorySearch
+            ]);
+        });
+        return $query;
     }
 }

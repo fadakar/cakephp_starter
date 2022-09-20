@@ -29,18 +29,9 @@ class NewsController extends AppController
             ->contain(['category', 'tags']);
 
         if (!empty($searchTerm)) {
-            $newsList->where(function (QueryExpression $exp, Query $query) use ($searchTerm) {
-                $newsSearch = $query->newExpr("MATCH(News.title, News.body) AGAINST('*$searchTerm*' IN BOOLEAN MODE)");
-                $categorySearch = $query->newExpr("MATCH(category.title) AGAINST('*$searchTerm*' IN BOOLEAN MODE)");
-
-                return $exp->or([
-                    $newsSearch, $categorySearch
-                ]);
-            });
+            $newsList->find('fullTextSearch', ['term' => $searchTerm]);
         }
-
-//        debug($newsList);
-//        exit();
+        
         $this->set(compact('newsList', 'newsTable'));
     }
 
