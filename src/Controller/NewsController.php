@@ -24,7 +24,7 @@ class NewsController extends AppController
     }
 
     public $paginate = [
-        'limit' => 5,
+        'limit' =>5,
         'sortWhitelist' => [
             'id',
             'category.title',
