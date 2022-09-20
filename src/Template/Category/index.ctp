@@ -43,7 +43,7 @@
                 <td class="py-4 px-6">
                     <?= h($item->title) ?>
                 </td>
-                <td class="flex gap-2 items-center justify-end">
+                <td class="flex gap-2 items-center justify-end px-4">
                     <a href="<?= $this->Url->build(['controller' => 'category', 'action' => 'view', $item->id]) ?>"
                        class="button secondary">
                         <i class="fa fa-eye"></i>

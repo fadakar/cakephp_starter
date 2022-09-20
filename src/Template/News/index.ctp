@@ -54,7 +54,7 @@
                         <td class="py-4 px-6">
                             <?= substr($item->body, 0, 70) ?>
                         </td>
-                        <td class="flex gap-2 items-center justify-end">
+                        <td class="flex gap-2 items-center justify-end px-4">
                             <a href="<?= $this->Url->build([
                                 'controller' => 'News', 'action' => 'view',
                                 $item->id, $newsTable->slug($item->title)]) ?>"
