@@ -1,5 +1,5 @@
 # CakePHP Blog Application Skeleton
-learn cakePHP version 3.10
+Learn cakePHP version 3.10
 
 
 [![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
