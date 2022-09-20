@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Database\Expression\QueryExpression;
+use Cake\ORM\Query;
 use Cake\ORM\TableRegistry;
 
 /**
@@ -25,10 +27,20 @@ class NewsController extends AppController
         $newsTable = $this->News;
         $newsList = $this->News->find()
             ->contain(['category', 'tags']);
+
         if (!empty($searchTerm)) {
-            $newsList->where("MATCH(News.title, body) AGAINST('$searchTerm' IN BOOLEAN MODE)");
+            $newsList->where(function (QueryExpression $exp, Query $query) use ($searchTerm) {
+                $newsSearch = $query->newExpr("MATCH(News.title, News.body) AGAINST('*$searchTerm*' IN BOOLEAN MODE)");
+                $categorySearch = $query->newExpr("MATCH(category.title) AGAINST('*$searchTerm*' IN BOOLEAN MODE)");
+
+                return $exp->or([
+                    $newsSearch, $categorySearch
+                ]);
+            });
         }
 
+//        debug($newsList);
+//        exit();
         $this->set(compact('newsList', 'newsTable'));
     }
 
