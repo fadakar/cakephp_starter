@@ -88,6 +88,13 @@ class NewsTable extends Table
         return $rules;
     }
 
+
+    /**
+     * full text search in news and relations
+     * @param Query $query
+     * @param array $options
+     * @return Query
+     */
     public function FindFullTextSearch(Query $query, array $options): Query
     {
         $term = $options['term'] ?? '';
