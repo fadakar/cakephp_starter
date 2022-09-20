@@ -64,6 +64,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 </div>
 
+<?= $this->Html->script('jquery') ?>
 <?= $this->fetch('script') ?>
 </body>
 </html>

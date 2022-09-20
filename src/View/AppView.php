@@ -42,12 +42,12 @@ class AppView extends View
         $this->loadHelper('Paginator');
 
         $this->Paginator->setTemplates([
-            'first' => '<a href="{{url}}"><div class="button secondary">{{text}}</div></a>',
-            'last' => '<a href="{{url}}"><div class="button secondary">{{text}}</div></a>',
-            'prevActive' => '<a href="{{url}}"><div class="button secondary">{{text}}</div></a>',
-            'nextActive' => '<a href="{{url}}"><div class="button secondary">{{text}}</div></a>',
-            'nextDisabled' => '<div class="button secondary hover:cursor-not-allowed">{{text}}</div>',
-            'prevDisabled' => '<div class="button secondary !hover:cursor-not-allowed">{{text}}</div>',
+            'first' => '<a class="button secondary" href="{{url}}">{{text}}</a>',
+            'last' => '<a class="button secondary" href="{{url}}">{{text}}</a>',
+            'prevActive' => '<a class="button secondary" href="{{url}}">{{text}}</a>',
+            'nextActive' => '<a class="button secondary" href="{{url}}">{{text}}</a>',
+            'nextDisabled' => '<a class="button secondary" href="{{url}}">{{text}}</a>',
+            'prevDisabled' => '<a class="button secondary" href="{{url}}">{{text}}</a>',
         ]);
 
     }

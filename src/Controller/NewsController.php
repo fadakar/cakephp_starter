@@ -39,7 +39,7 @@ class NewsController extends AppController
      */
     public function index()
     {
-        $searchTerm = $this->request->getQuery('searchTerm');
+        $searchTerm = $this->request->getData('searchTerm');
         $newsTable = $this->News;
         $newsList = $this->News->find()
             ->contain(['category', 'tags']);

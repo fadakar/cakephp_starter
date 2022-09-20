@@ -16,9 +16,7 @@
 
 <div class="w-full card blue">
     <div class="flex flex-col mr-[-2px]">
-        <form method="get" action="<?= $this->Url->build(['controller' => 'news', 'action' => 'index']) ?>">
-            <?= $this->element('Form/tableSearch') ?>
-        </form>
+        <?= $this->element('Form/tableSearch', ['controller' => 'news', 'action' => 'index']) ?>
 
         <div class="overflow-x-auto relative">
             <table class="w-full text-sm  text-gray-500 dark:text-gray-400">
