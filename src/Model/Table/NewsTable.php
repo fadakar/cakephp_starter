@@ -8,6 +8,7 @@ use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 
 /**
@@ -107,5 +108,45 @@ class NewsTable extends Table
             ]);
         });
         return $query;
+    }
+
+
+    public function beforeSave($event, $entity, $options)
+    {
+        if ($entity->tags_string) {
+            $entity->tags = $this->_buildTags($entity->tags_string);
+        }
+    }
+
+    protected function _buildTags($tagsString)
+    {
+        $tagTable = TableRegistry::getTableLocator()->get('Tags');
+        // Trim tags
+        $newTags = array_map('trim', explode(',', $tagsString));
+        // Remove all empty tags
+        $newTags = array_filter($newTags);
+        // Reduce duplicated tags
+        $newTags = array_unique($newTags);
+
+        $out = [];
+        $query = $tagTable->find()
+            ->where(['Tags.title IN' => $newTags]);
+
+        // Remove existing tags from the list of new tags.
+        foreach ($query->extract('title') as $existing) {
+            $index = array_search($existing, $newTags);
+            if ($index !== false) {
+                unset($newTags[$index]);
+            }
+        }
+        // Add existing tags.
+        foreach ($query as $tag) {
+            $out[] = $tag;
+        }
+        // Add new tags.
+        foreach ($newTags as $tag) {
+            $out[] = $tagTable->newEntity(['title' => $tag]);
+        }
+        return $out;
     }
 }

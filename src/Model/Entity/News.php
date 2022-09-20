@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Model\Entity;
 
+use Cake\Collection\Collection;
 use Cake\ORM\Entity;
 
 /**
@@ -24,6 +26,23 @@ class News extends Entity
     protected $_accessible = [
         'title' => true,
         'body' => true,
+        'tags_string' => true,
         'category_id' => true,
     ];
+
+
+    protected function _getTagsString()
+    {
+        if (isset($this->_properties['tags_string'])) {
+            return $this->_properties['tags_string'];
+        }
+        if (empty($this->tags)) {
+            return '';
+        }
+        $tags = new Collection($this->tags);
+        $str = $tags->reduce(function ($string, $tag) {
+            return $string . $tag->title . ', ';
+        }, '');
+        return trim($str, ', ');
+    }
 }

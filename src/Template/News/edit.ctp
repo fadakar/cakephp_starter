@@ -27,6 +27,8 @@
 
     <?= $this->Form->control('body', ['label' => 'محتوا']) ?>
 
+    <?= $this->Form->control('tags_string', ['error' => false, 'label' => 'برچسب']) ?>
+
     <?= $this->Form->submit('ثبت', ['class' => 'button primary mt-2']) ?>
     <?php $this->Form->end() ?>
 </div>

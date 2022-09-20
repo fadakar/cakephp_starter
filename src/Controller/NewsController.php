@@ -24,7 +24,7 @@ class NewsController extends AppController
     }
 
     public $paginate = [
-        'limit' =>5,
+        'limit' => 5,
         'sortWhitelist' => [
             'id',
             'category.title',
@@ -120,7 +120,7 @@ class NewsController extends AppController
 
 
         $news = $this->News->get($id, [
-            'contain' => [],
+            'contain' => ['category', 'tags'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $news = $this->News->patchEntity($news, $this->request->getData());
@@ -133,6 +133,7 @@ class NewsController extends AppController
         }
         $categoryTable = TableRegistry::getTableLocator()->get('category');
         $categories = $categoryTable->find('list')->limit(100);
+
         $this->set(compact('news', 'categories'));
     }
 
