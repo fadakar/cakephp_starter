@@ -54,9 +54,9 @@ class NewsTable extends Table
 
     public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
     {
-        if (isset($data['title'])) {
-            $data['title'] = 'title: ' . $data['title'];
-        }
+//        if (isset($data['title'])) {
+//            $data['title'] = 'title: ' . $data['title'];
+//        }
     }
 
     /**
