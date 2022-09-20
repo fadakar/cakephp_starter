@@ -116,20 +116,19 @@ class NewsController extends AppController
      */
     public function edit($id = null)
     {
-        // TODO create or link tags to news
-
-
         $news = $this->News->get($id, [
             'contain' => ['category', 'tags'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $news = $this->News->patchEntity($news, $this->request->getData());
-            if ($this->News->save($news)) {
-                $this->Flash->success(__('The news has been saved.'));
+            $this->News->getConnection()->transactional(function () use ($news) {
+                $news = $this->News->patchEntity($news, $this->request->getData());
+                if ($this->News->save($news)) {
+                    $this->Flash->success(__('The news has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The news could not be saved. Please, try again.'));
+                    return $this->redirect(['action' => 'index']);
+                }
+                $this->Flash->error(__('The news could not be saved. Please, try again.'));
+            });
         }
         $categoryTable = TableRegistry::getTableLocator()->get('category');
         $categories = $categoryTable->find('list')->limit(100);
