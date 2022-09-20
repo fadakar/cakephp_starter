@@ -1,6 +1,10 @@
 <?php $this->start('title') ?>
 <div class="flex items-center gap-4">
-    <div>ویرایش خبر</div>
+    <?php if ($news->id) : ?>
+        <div>ویرایش خبر</div>
+    <?php else: ?>
+        <div>افزودن خبر جدید</div>
+    <?php endif; ?>
     <i class="text-gray-600 fa fa-edit"></i>
 </div>
 <?php $this->end() ?>
@@ -10,7 +14,7 @@
     $this->Form->create($news, [
         'url' => [
             'controller' => 'news',
-            'action' => 'edit',
+            'action' => $news->id ? 'edit' : 'add',
         ],
         'type' => 'post'
     ])

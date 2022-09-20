@@ -102,6 +102,8 @@ class NewsController extends AppController
         }
         $categoryTable = TableRegistry::getTableLocator()->get('category');
         $categories = $categoryTable->find('list')->limit(100);
+
+        $this->viewBuilder()->setTemplate('edit');
         $this->set(compact('news', 'categories'));
     }
 
