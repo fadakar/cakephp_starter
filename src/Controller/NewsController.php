@@ -78,13 +78,11 @@ class NewsController extends AppController
      */
     public function add()
     {
-        // TODO create or link tags to news
-
         $news = $this->News->newEntity();
         if ($this->request->is('post')) {
             $news = $this->News->patchEntity($news, $this->request->getData());
             if ($this->News->save($news)) {
-                $this->Flash->success(__('The news has been saved.'));
+                $this->Flash->success(__('خبر با موفقیت ذخیره شد'));
                 return $this->redirect(['action' => 'index']);
             } else {
 
@@ -95,7 +93,7 @@ class NewsController extends AppController
                         }
                     }
                 } else {
-                    $this->Flash->error(__('The news could not be saved. Please, try again.'));
+                    $this->Flash->error(__('خبر ذخیره نشد لطفا مجددا تلاش فرمایید'));
                 }
 
             }
@@ -123,11 +121,11 @@ class NewsController extends AppController
             $this->News->getConnection()->transactional(function () use ($news) {
                 $news = $this->News->patchEntity($news, $this->request->getData());
                 if ($this->News->save($news)) {
-                    $this->Flash->success(__('The news has been saved.'));
+                    $this->Flash->success(__('خبر با موفقیت به روزرسانی شد'));
 
                     return $this->redirect(['action' => 'index']);
                 }
-                $this->Flash->error(__('The news could not be saved. Please, try again.'));
+                $this->Flash->error(__('خبر بروزرسانی نشد لطفا مجددا تلاش فرمایید'));
             });
         }
         $categoryTable = TableRegistry::getTableLocator()->get('category');
@@ -148,9 +146,9 @@ class NewsController extends AppController
         $this->request->allowMethod(['get', 'delete']);
         $news = $this->News->get($id);
         if ($this->News->delete($news)) {
-            $this->Flash->success(__('The news has been deleted.'));
+            $this->Flash->success(__('خبر با موفقیت حذف شد'));
         } else {
-            $this->Flash->error(__('The news could not be deleted. Please, try again.'));
+            $this->Flash->error(__('خبر حذف نشد لطفا مجددا تلاش فرمایید'));
         }
 
         return $this->redirect(['action' => 'index']);
