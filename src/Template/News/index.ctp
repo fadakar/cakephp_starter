@@ -15,7 +15,10 @@
 
 <div class="w-full card blue">
     <div class="flex flex-col mr-[-2px]">
-        <?= $this->element('Form/tableSearch') ?>
+        <form method="get" action="<?= $this->Url->build(['controller' => 'news', 'action' => 'index']) ?>">
+            <?= $this->element('Form/tableSearch') ?>
+        </form>
+
         <?= $this->cell('NewsList') ?>
     </div>
 </div>
