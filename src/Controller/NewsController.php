@@ -21,7 +21,10 @@ class NewsController extends AppController
      */
     public function index()
     {
-
+        $newsTable = $this->News;
+        $newsList = $this->News->find()
+            ->contain(['category', 'tags']);
+        $this->set(compact('newsList', 'newsTable'));
     }
 
     /**
