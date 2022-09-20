@@ -49,14 +49,18 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <div class=" col-span-10">
         <div class="flex flex-col">
-            <div>
-                <?= $this->Flash->render() ?>
-            </div>
+
             <div class="bg-gray-100 w-full text-right p-4">
                 <?= $this->element('topbar') ?>
             </div>
             <div class="p-8">
-                <?= $this->fetch('content') ?>
+                <div class="flex flex-col gap-2">
+                    <div class="w-full">
+                        <?= $this->Flash->render() ?>
+                    </div>
+                    <div class="w-full"><?= $this->fetch('content') ?></div>
+                </div>
+
             </div>
         </div>
     </div>
