@@ -43,7 +43,8 @@ class NewsController extends AppController
         $searchTerm = $this->request->getData('searchTerm');
         $newsTable = $this->News;
         $newsList = $this->News->find()
-            ->contain(['category', 'tags']);
+            ->contain(['category', 'tags'])
+            ->orderDesc('News.id');
 
         if (!empty($searchTerm)) {
             $newsList->find('fullTextSearch', ['term' => $searchTerm]);
