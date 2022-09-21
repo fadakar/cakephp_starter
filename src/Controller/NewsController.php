@@ -28,7 +28,8 @@ class NewsController extends AppController
         'sortWhitelist' => [
             'id',
             'category.title',
-            'title'
+            'title',
+            'published_date',
         ]
     ];
 
