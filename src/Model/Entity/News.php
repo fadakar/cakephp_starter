@@ -25,10 +25,11 @@ class News extends Entity
      */
     protected $_accessible = [
         'title' => true,
+        'publish_date' => true,
         'body' => true,
         'tags_string' => true,
-        'published_date' => true,
         'category_id' => true,
+        '*' => true,
     ];
 
 

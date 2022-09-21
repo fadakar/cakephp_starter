@@ -153,7 +153,10 @@ class NewsTable extends Table
 
     public function afterSave(Event $event, EntityInterface $entity, ArrayObject $options)
     {
-        $newNewsEvent = new Event('News.afterSave', $entity);
-        $this->getEventManager()->dispatch($newNewsEvent);
+        if (empty($entity->get('publish_date'))) {
+            $newNewsEvent = new Event('News.afterSave', $entity);
+            $this->getEventManager()->dispatch($newNewsEvent);
+        }
+
     }
 }
