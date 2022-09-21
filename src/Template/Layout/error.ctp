@@ -27,6 +27,9 @@
     <?= $this->Html->css('style.css') ?>
 
     <?= $this->fetch('meta') ?>
+
+    <?= $this->Html->css('tailwind.prod') ?>
+    <?= $this->Html->css('fa/css/all.min') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>

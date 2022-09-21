@@ -30,6 +30,10 @@
                     <th scope="col" class="py-3 px-6">
                         <?= $this->Paginator->sort('title', 'عنوان') ?>
                     </th>
+
+                    <th scope="col" class="py-3 px-6">
+                        <?= $this->Paginator->sort('published_date', 'تاریخ انتشار') ?>
+                    </th>
                     <th scope="col" class="py-3 px-6">
                         محتوا
                     </th>
@@ -49,6 +53,19 @@
                         <td class="py-4 px-6">
                             <?= substr($item->title, 0, 70) ?>
                         </td>
+
+                        <td class="py-4 px-6">
+                            <?php if (!empty($item->publish_date)): ?>
+                                <div class="bg-green-400 text-white px-4 py-2 rounded-xl w-fit align-middle font-bold">
+                                    <?= $item->publish_date ?>
+                                </div>
+                            <?php else: ?>
+                                <div class="bg-amber-400 text-white px-4 py-2 rounded-xl w-fit align-middle font-bold">
+                                    منتشر نشده
+                                </div>
+                            <?php endif; ?>
+                        </td>
+
                         <td class="py-4 px-6">
                             <?= substr($item->body, 0, 70) ?>
                         </td>
