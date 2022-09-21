@@ -27,6 +27,7 @@ class News extends Entity
         'title' => true,
         'body' => true,
         'tags_string' => true,
+        'published_date' => true,
         'category_id' => true,
     ];
 
