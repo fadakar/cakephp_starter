@@ -201,3 +201,9 @@ Type::build('timestamp')
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
+
+// -------------------- Event Listeners -----------------------------
+
+$newsEventListener = new \App\Event\NewsEventListener();
+\Cake\Event\EventManager::instance()->on($newsEventListener);
+

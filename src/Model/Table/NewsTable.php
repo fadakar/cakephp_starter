@@ -4,6 +4,7 @@ namespace App\Model\Table;
 
 use ArrayObject;
 use Cake\Database\Expression\QueryExpression;
+use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -148,5 +149,11 @@ class NewsTable extends Table
             $out[] = $tagTable->newEntity(['title' => $tag]);
         }
         return $out;
+    }
+
+    public function afterSave(Event $event, EntityInterface $entity, ArrayObject $options)
+    {
+        $newNewsEvent = new Event('News.afterSave', $entity);
+        $this->getEventManager()->dispatch($newNewsEvent);
     }
 }
