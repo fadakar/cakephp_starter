@@ -8,6 +8,7 @@ use Cake\Console\Command;
 use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
 use Cake\ORM\TableRegistry;
+use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * NewsPunlisherWorker command.
@@ -43,11 +44,14 @@ class NewsPunlisherWorkerCommand extends Command
      */
     public function execute(Arguments $args, ConsoleIo $io)
     {
-        RabbitmqService::receiveDirect('news.published', function ($message) {
+        RabbitmqService::receiveDirect('news.published', function (AMQPMessage $message) {
             sleep(5);
             $model = json_decode($message->body);
             $newsTable = TableRegistry::getTableLocator()->get('News');
             $news = $newsTable->get($model->id);
+            echo "process: {$news->title} \n";
+//            $message->reject(true);
+            return;
             if ($news) {
                 $news->publish_date = date('Y-m-d H:i:s');
                 if ($newsTable->save($news)) {

@@ -5,6 +5,7 @@ namespace App\Service;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Exchange\AMQPExchangeType;
 use PhpAmqpLib\Message\AMQPMessage;
+use PhpAmqpLib\Wire\AMQPTable;
 
 class RabbitmqService
 {
@@ -27,8 +28,24 @@ class RabbitmqService
         $connection = self::getConnection();
         $channel = $connection->channel();
 
-        list($queue_name, ,) = $channel->queue_declare("news_published_queue", false, true, false, false);
+//        --------------- dead x -----------------------------
+        $channel->exchange_declare('news_published_retry_exchange_direct', AMQPExchangeType::DIRECT, false, true, false);
+        list($retry_queue_name, ,) = $channel->queue_declare("news_published_retry_queue", false, true, false, false, false,
+            new AMQPTable([
+                'x-dead-letter-exchange' => 'news_published_exchange_direct',
+                'x-message-ttl' => 45,
+//                'x-expires' => 160000
+            ]));
+        $channel->queue_bind($retry_queue_name, 'news_published_retry_exchange_direct', $routeKey);
+//        --------------- dead x -----------------------------
+
         $channel->exchange_declare('news_published_exchange_direct', AMQPExchangeType::DIRECT, false, true, false);
+        list($queue_name, ,) = $channel->queue_declare("news_published_queue", false, true, false, false, false,
+            new AMQPTable([
+                'x-dead-letter-exchange' => 'news_published_retry_exchange_direct',
+                'x-message-ttl' => 20,
+//                'x-expires' => 160000
+            ]));
         $channel->queue_bind($queue_name, 'news_published_exchange_direct', $routeKey);
 
         $msg = new AMQPMessage($data);
@@ -43,7 +60,12 @@ class RabbitmqService
         $connection = self::getConnection();
         $channel = $connection->channel();
 
-        list($queue_name, ,) = $channel->queue_declare("news_published_queue", false, true, false, false);
+        list($queue_name, ,) = $channel->queue_declare("news_published_queue", false, true, false, false, false,
+            new AMQPTable([
+                'x-dead-letter-exchange' => 'news_published_retry_exchange_direct',
+                'x-message-ttl' => 20,
+//                'x-expires' => 160000
+            ]));
         $channel->exchange_declare('news_published_exchange_direct', AMQPExchangeType::DIRECT, false, true, false);
         $channel->queue_bind($queue_name, 'news_published_exchange_direct', $routeKey);
 
