@@ -50,6 +50,7 @@ class NewsPunlisherWorkerCommand extends Command
             $newsTable = TableRegistry::getTableLocator()->get('News');
             $news = $newsTable->get($model->id);
             echo "process: {$news->title} \n";
+//            $message->nack();
 //            $message->reject(true);
             return;
             if ($news) {

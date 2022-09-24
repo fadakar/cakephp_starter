@@ -33,7 +33,7 @@ class RabbitmqService
         list($retry_queue_name, ,) = $channel->queue_declare("news_published_retry_queue", false, true, false, false, false,
             new AMQPTable([
                 'x-dead-letter-exchange' => 'news_published_exchange_direct',
-                'x-message-ttl' => 45,
+                'x-message-ttl' => 10000,
 //                'x-expires' => 160000
             ]));
         $channel->queue_bind($retry_queue_name, 'news_published_retry_exchange_direct', $routeKey);
@@ -43,7 +43,7 @@ class RabbitmqService
         list($queue_name, ,) = $channel->queue_declare("news_published_queue", false, true, false, false, false,
             new AMQPTable([
                 'x-dead-letter-exchange' => 'news_published_retry_exchange_direct',
-                'x-message-ttl' => 20,
+                'x-message-ttl' => 30000,
 //                'x-expires' => 160000
             ]));
         $channel->queue_bind($queue_name, 'news_published_exchange_direct', $routeKey);
@@ -63,7 +63,7 @@ class RabbitmqService
         list($queue_name, ,) = $channel->queue_declare("news_published_queue", false, true, false, false, false,
             new AMQPTable([
                 'x-dead-letter-exchange' => 'news_published_retry_exchange_direct',
-                'x-message-ttl' => 20,
+                'x-message-ttl' => 30000,
 //                'x-expires' => 160000
             ]));
         $channel->exchange_declare('news_published_exchange_direct', AMQPExchangeType::DIRECT, false, true, false);
