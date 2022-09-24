@@ -42,7 +42,6 @@ class RabbitmqService
                 new AMQPTable([
                     'x-dead-letter-exchange' => 'news_published_retry_exchange_direct',
                     'x-message-ttl' => 30000,
-//                'x-expires' => 160000
                 ]));
 
         list($retry_queue_name, ,) =
@@ -56,7 +55,6 @@ class RabbitmqService
                 new AMQPTable([
                     'x-dead-letter-exchange' => 'news_published_exchange_direct',
                     'x-message-ttl' => 10000,
-//                'x-expires' => 160000
                 ]));
 
         $channel->queue_bind($queue_name, 'news_published_exchange_direct', $routeKey);
@@ -86,7 +84,6 @@ class RabbitmqService
             new AMQPTable([
                 'x-dead-letter-exchange' => 'news_published_retry_exchange_direct',
                 'x-message-ttl' => 30000,
-//                'x-expires' => 160000
             ]));
 
         $channel->queue_bind($queue_name, 'news_published_exchange_direct', $routeKey);
